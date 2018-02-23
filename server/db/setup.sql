@@ -1,0 +1,15 @@
+create table users(id serial primary key,
+username text,
+password text),
+
+create table properties(propid serial primary key,
+propertyname text,
+propertydescription text,
+address text,
+city text,
+state text,
+zip text,
+imgurl text,
+loanamount integer,
+monthlymortgage integer,
+desiredrent integer)
