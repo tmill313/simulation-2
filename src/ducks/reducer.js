@@ -114,12 +114,12 @@ export function getListings(l) {
     payload: l
     }
 }
-export function typingPropteryName(p) {
+export function typingPropertyName(p) {
     return {type: TYPING_PROP_NAME,
     payload: p
     }
 }
-export function typingPropteryDescription(p) {
+export function typingPropertyDescription(p) {
     return {type: TYPING_PROP_DESC,
     payload: p
     }

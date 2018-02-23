@@ -2,6 +2,7 @@ const massive = require('massive');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const ctrl = require('./controller');
 
 const app = express();
 const port = 3030;
@@ -12,7 +13,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-
+app.get('/listings', ctrl.getListings)
 
 
 
