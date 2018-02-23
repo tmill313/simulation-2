@@ -12,7 +12,7 @@ class Step3 extends Component {
 
 
     render() {
-        console.log(this.props.imageurl)
+
         return (
 
             <div>

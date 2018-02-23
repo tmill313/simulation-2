@@ -11,8 +11,6 @@ class Step1 extends Component {
 
     render() {
 
-        console.log(this.props.propName)
-        console.log(this.props.propDesc)
         return (
 
             <div>

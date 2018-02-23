@@ -14,6 +14,7 @@ app.use(cors());
 
 
 app.get('/listings', ctrl.getListings)
+app.post('/createListing', ctrl.createListing)
 
 
 

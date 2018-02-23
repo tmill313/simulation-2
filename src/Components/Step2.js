@@ -8,10 +8,7 @@ class Step2 extends Component {
 
 
     render() {
-        console.log(this.props.address)
-        console.log(this.props.city)
-        console.log(this.props.state)
-        console.log(this.props.zip)
+
         return (
 
             <div>

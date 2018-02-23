@@ -77,11 +77,7 @@ function reducer(state=initialState, action) {
         return Object.assign({}, state, {desiredRent: action.payload})
 
         case CANCEL_LISTING:
-        return Object.assign({},{username: '',
-        password: '',
-        newUsername: '',
-        newPassword: '',
-        listings: [],
+        return Object.assign({},{
         propName: '',
         propDesc: '',
         address: '',

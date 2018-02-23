@@ -10,8 +10,7 @@ class Step4 extends Component {
 
 
     render() {
-        console.log(this.props.monthlyMort)
-        console.log(this.props.loanAmount)
+
         return (
 
             <div>

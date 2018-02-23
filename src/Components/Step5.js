@@ -1,24 +1,46 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
-import {typingDesiredRent} from '../ducks/reducer';
+import {typingDesiredRent, cancelListing} from '../ducks/reducer';
+import axios from 'axios';
+
+
 
 class Step5 extends Component {
+    constructor() {
+        super()
+        this.createListing=this.createListing.bind(this)
+    }
 
-
+    createListing() {
+        let body = {
+            desiredRent: this.props.desiredRent,
+            loanAmount: this.props.loanAmount,
+            propName: this.props.propName,
+            propDesc: this.props.propDesc,
+            address: this.props.address,
+            city: this.props.city,
+            state: this.props.state,
+            zip: this.props.zip,
+            imageurl: this.props.imageurl,
+            monthlyMort: this.props.monthlyMort
+        }
+        axios.post('./createListing', body).then(res => {
+            this.props.cancelListing();
+        })
+    }
 
 
 
 
     render() {
-        console.log(this.props.desiredRent)
-        console.log(this.props.loanAmount)
+        console.log(this.props.desiresRent)
         return (
 
             <div>
                 <input placeholder="Desired Rent" onChange={e => this.props.typingDesiredRent(e.target.value)}></input>
                 <Link to='/Dashboard'>
-                    <button>
+                    <button onClick={this.createListing}>
                         complete
                 </button>
                 </Link>
@@ -45,8 +67,16 @@ class Step5 extends Component {
 function mapStateToProps(state) {
     return{
         desiredRent: state.desiredRent,
-        loanAmount: state.loanAmount
+        loanAmount: state.loanAmount,
+        propName: state.propName,
+        propDesc: state.propDesc,
+        address: state.address,
+        city: state.city,
+        state: state.state,
+        zip: state.zip,
+        imageurl: state.imageurl,
+        monthlyMort: state.monthlyMort
     }
 }
 
-export default connect(mapStateToProps, {typingDesiredRent})(Step5)
+export default connect(mapStateToProps, {typingDesiredRent, cancelListing})(Step5)
