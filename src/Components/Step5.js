@@ -3,12 +3,21 @@ import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {typingDesiredRent, cancelListing} from '../ducks/reducer';
 import axios from 'axios';
+import {Redirect} from 'react-router'
 
 
 
 class Step5 extends Component {
     constructor() {
         super()
+
+        this.state = {
+            redirect: false
+        }
+
+
+
+
         this.createListing=this.createListing.bind(this)
     }
 
@@ -25,8 +34,11 @@ class Step5 extends Component {
             imageurl: this.props.imageurl,
             monthlyMort: this.props.monthlyMort
         }
-        axios.post('./createListing', body).then(res => {
-            this.props.cancelListing();
+        axios.post('/createListing', body).then(res => {
+            console.log('has fired')
+            this.setState({
+                redirect: true
+            })
         })
     }
 
@@ -34,16 +46,16 @@ class Step5 extends Component {
 
 
     render() {
-        console.log(this.props.desiresRent)
+        if(this.state.redirect) {
+            return <Redirect to="/Dashboard"/>
+        }
         return (
 
             <div>
                 <input placeholder="Desired Rent" onChange={e => this.props.typingDesiredRent(e.target.value)}></input>
-                <Link to='/Dashboard'>
-                    <button onClick={this.createListing}>
+                    <button onClick={() => this.createListing()}>
                         complete
                 </button>
-                </Link>
                 <Link to='/'>
                     <button>
                         Logout

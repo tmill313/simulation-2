@@ -15,6 +15,8 @@ app.use(cors());
 
 app.get('/listings', ctrl.getListings)
 app.post('/createListing', ctrl.createListing)
+app.delete('/deleteListing/:id', ctrl.deleteListing)
+app.post('/newUser', ctrl.newUser)
 
 
 
